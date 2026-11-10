@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>سوق SY — فتح التطبيق</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<!--
+  The welcome mail's button lands here, not on souksy:// directly.
+
+  WHY A PAGE AT ALL: Brevo rewrites every link in a transactional mail into its
+  own https click-tracking redirect, and that cannot be switched off per link
+  or per message on our plan. A redirect from Brevo's server to a custom
+  scheme goes nowhere: the tap ended on a Brevo page. An https page is
+  something Brevo's redirect can reach, and from here the hand-off to the app
+  happens in the visitor's own browser.
+
+  WHY AN intent:// URL ON ANDROID: Chrome and Gmail's in-app browser open an
+  intent:// URL even when the scheme is not registered, and fall back to
+  S.browser_fallback_url (the Play listing) instead of showing an error. A bare
+  souksy:// does neither.
+
+  WHY THE BUTTON STAYS: some browsers refuse to leave the page for an app
+  without a tap. The automatic attempt covers the common case, and the button
+  is a real user gesture for the rest.
+-->
+<style>
+  .open { text-align: center; }
+  .open .btn {
+    display: inline-block;
+    margin: 18px 0 6px;
+    padding: 14px 34px;
+    background: var(--primary);
+    color: #faf9f6;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 10px;
+  }
+  .open .btn:focus-visible { outline: 3px solid var(--secondary); outline-offset: 3px; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="inner">
+    <a class="brand" href="index.html">سوق SY</a>
+    <p>سوق سوريا لكل ما يُباع ويُشترى</p>
+  </div>
+</header>
+
+<main>
+<div class="card open">
+  <h1>جارٍ فتح التطبيق…</h1>
+  <p>إن لم يُفتح تطبيق سوق SY تلقائياً، اضغط على الزر.</p>
+  <a class="btn" id="open" href="souksy://">فتح تطبيق سوق SY</a>
+  <p class="meta">التطبيق غير مثبّت؟ <a href="https://play.google.com/store/apps/details?id=com.souksy.app">حمّله من Google Play</a></p>
+</div>
+</main>
+
+<script>
+  (function () {
+    var PLAY = "https://play.google.com/store/apps/details?id=com.souksy.app";
+    var isAndroid = /android/i.test(navigator.userAgent);
+    var target = isAndroid
+      ? "intent://#Intent;scheme=souksy;package=com.souksy.app;S.browser_fallback_url=" +
+        encodeURIComponent(PLAY) + ";end"
+      : "souksy://";
+    document.getElementById("open").href = target;
+    window.location.replace(target);
+  })();
+</script>
+</body>
+</html>
