@@ -1,9 +1,9 @@
 {
-  "versionName": "1.0.2",
-  "versionCode": 9,
-  "date": "2026-11-14",
-  "sizeBytes": 29844141,
-  "sha256": "a7695677b6013fa2d0f42124d1ce81ffc8ed832f129db2acf20ea07e34ba90cb",
-  "apkUrl": "https://github.com/Ahmad-Diab-1997/SoukSy-Mobile-Legal/releases/download/v1.0.2-9/souksy.apk",
-  "notes": "حجم أصغر بكثير (أقل من 30 ميغابايت) وتحسينات عامة."
+  "versionName": "1.0.3",
+  "versionCode": 10,
+  "date": "2026-11-15",
+  "sizeBytes": 29905581,
+  "sha256": "2fa47c0dd21c464abce84a738080d0ff29c33271c423739f02c62dde667c1195",
+  "apkUrl": "https://github.com/Ahmad-Diab-1997/SoukSy-Mobile-Legal/releases/download/v1.0.3-10/souksy.apk",
+  "notes": "تنبيه عند صدور تحديث جديد، ورسائل من إدارة التطبيق."
 }
